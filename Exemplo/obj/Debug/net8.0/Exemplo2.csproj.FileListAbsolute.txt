@@ -1,0 +1,14 @@
+C:\Users\gabri\source\repos\ASP.Net\Exemplo2\bin\Debug\net8.0\Exemplo2.exe
+C:\Users\gabri\source\repos\ASP.Net\Exemplo2\bin\Debug\net8.0\Exemplo2.deps.json
+C:\Users\gabri\source\repos\ASP.Net\Exemplo2\bin\Debug\net8.0\Exemplo2.runtimeconfig.json
+C:\Users\gabri\source\repos\ASP.Net\Exemplo2\bin\Debug\net8.0\Exemplo2.dll
+C:\Users\gabri\source\repos\ASP.Net\Exemplo2\bin\Debug\net8.0\Exemplo2.pdb
+C:\Users\gabri\source\repos\ASP.Net\Exemplo2\obj\Debug\net8.0\Exemplo2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gabri\source\repos\ASP.Net\Exemplo2\obj\Debug\net8.0\Exemplo2.AssemblyInfoInputs.cache
+C:\Users\gabri\source\repos\ASP.Net\Exemplo2\obj\Debug\net8.0\Exemplo2.AssemblyInfo.cs
+C:\Users\gabri\source\repos\ASP.Net\Exemplo2\obj\Debug\net8.0\Exemplo2.csproj.CoreCompileInputs.cache
+C:\Users\gabri\source\repos\ASP.Net\Exemplo2\obj\Debug\net8.0\Exemplo2.dll
+C:\Users\gabri\source\repos\ASP.Net\Exemplo2\obj\Debug\net8.0\refint\Exemplo2.dll
+C:\Users\gabri\source\repos\ASP.Net\Exemplo2\obj\Debug\net8.0\Exemplo2.pdb
+C:\Users\gabri\source\repos\ASP.Net\Exemplo2\obj\Debug\net8.0\Exemplo2.genruntimeconfig.cache
+C:\Users\gabri\source\repos\ASP.Net\Exemplo2\obj\Debug\net8.0\ref\Exemplo2.dll

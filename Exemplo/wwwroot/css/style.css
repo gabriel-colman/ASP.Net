@@ -1,0 +1,120 @@
+/* Importando fonte moderna */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Reset básico */
+body, h1, h2, p, a {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+/* Fundo animado */
+body {
+    background: linear-gradient(135deg, #1e1e2e, #4a4e69, #22223b);
+    background-size: 400% 400%;
+    animation: gradientBG 10s infinite alternate;
+    color: white;
+}
+
+/* Animação do fundo */
+@keyframes gradientBG {
+    0% { background-position: left top; }
+    100% { background-position: right bottom; }
+}
+
+/* Cabeçalho */
+header {
+    background: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    padding: 50px 0;
+    font-size: 22px;
+}
+
+/* Foto de perfil */
+.profile img {
+    width: 200px;
+    height: 200px;
+    border-radius: 0;
+    margin-top: 20px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* Seção sobre mim */
+.about {
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    font-size: 18px;
+}
+
+/* Links sociais */
+.social a {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background: #00d4ff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin: 15px;
+    transition: 0.3s;
+    font-size: 18px;
+}
+
+.social a:hover {
+    background: #ff6b6b;
+}
+
+/* Habilidades */
+.skills {
+    background: #1e1e2e;
+    padding: 30px;
+}
+
+.skill-list span {
+    display: inline-block;
+    background: #ff6b6b;
+    color: white;
+    padding: 10px 20px;
+    margin: 8px;
+    border-radius: 8px;
+    font-size: 18px;
+}
+
+/* Projetos */
+.projects {
+    padding: 30px;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    margin: 20px;
+    transition: 0.3s;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+}
+
+/* Rodapé */
+footer {
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Cursor personalizado */
+.cursor {
+    width: 30px;
+    height: 30px;
+    background: url('../img/cursor.png') no-repeat center;
+    background-size: cover;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: transform 0.1s;
+}
