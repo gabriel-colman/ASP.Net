@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gabri\\source\\repos\\ASP.Net\\Exemplo2\\Exemplo2.csproj": {}
+    "C:\\Users\\gabri\\Documents\\Aula\\Digix\\Codigo ASPNET\\ASP.Net\\Exemplo\\Exemplo2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gabri\\source\\repos\\ASP.Net\\Exemplo2\\Exemplo2.csproj": {
+    "C:\\Users\\gabri\\Documents\\Aula\\Digix\\Codigo ASPNET\\ASP.Net\\Exemplo\\Exemplo2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gabri\\source\\repos\\ASP.Net\\Exemplo2\\Exemplo2.csproj",
+        "projectUniqueName": "C:\\Users\\gabri\\Documents\\Aula\\Digix\\Codigo ASPNET\\ASP.Net\\Exemplo\\Exemplo2.csproj",
         "projectName": "Exemplo2",
-        "projectPath": "C:\\Users\\gabri\\source\\repos\\ASP.Net\\Exemplo2\\Exemplo2.csproj",
+        "projectPath": "C:\\Users\\gabri\\Documents\\Aula\\Digix\\Codigo ASPNET\\ASP.Net\\Exemplo\\Exemplo2.csproj",
         "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gabri\\source\\repos\\ASP.Net\\Exemplo2\\obj\\",
+        "outputPath": "C:\\Users\\gabri\\Documents\\Aula\\Digix\\Codigo ASPNET\\ASP.Net\\Exemplo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
