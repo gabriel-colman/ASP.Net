@@ -46,6 +46,8 @@ namespace Exemplo_2_ASPNET_ENDPOINT
             app.Run(); // Vai rodar a aplicação
 
             // O já pré estabelecido pela API do ASP.NET Core para entrar no Swagger é: https://localhost:5001/swagger/index.html
+
+            // Executar no swagger: https://localhost:5001/swagger/index.html
         }
     }
 }
