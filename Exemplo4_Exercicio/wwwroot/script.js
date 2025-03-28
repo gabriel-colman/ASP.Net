@@ -24,7 +24,7 @@ function carregarUsuarios() {
                         <td>${usuario.ramal}</td>
                         <td>${usuario.especialidade}</td>
                         <td>
-                            <button class="edit" onclick="editarUsuario(${usuario.id})"></button>
+                            <button class="edit" onclick="editarUsuario(${usuario.id})">Editar</button>
                             <button class="delete" onclick='deletarUsuario(${usuario.id})'>Deletar</button>
                         </td>
                     </tr>
@@ -68,28 +68,33 @@ function carregarUsuarios() {
 
 
 function salvarUsuario(e) {
-    e.preventDefault(); // Impede que a página recarregue
+    e.preventDefault();
+  
+    const id = document.getElementById("id").value;
   
     const usuario = {
-      id: parseInt(document.getElementById("id").value),
+      id: parseInt(id),
       nome: document.getElementById("nome").value,
       password: document.getElementById("senha").value,
       ramal: parseInt(document.getElementById("ramal").value),
       especialidade: document.getElementById("especialidade").value
     };
   
-    fetch("http://localhost:5000/Usuario", {
-      method: "POST",
+    const method = id ? "PUT" : "POST";
+    const url = id ? `${API}/${id}` : API;
+  
+    fetch(url, {
+      method: method,
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(usuario)
     })
-    .then(res => res.json())
-    .then(data => {
-      console.log("Usuário criado:", data);
-      document.getElementById("usuarioform").reset();
-      carregarUsuarios();
-    })
-    .catch(error => console.error("Erro ao criar usuário:", error));
+      .then(res => res.json())
+      .then(data => {
+        console.log("Salvo:", data);
+        document.getElementById("usuarioform").reset();
+        carregarUsuarios();
+      })
+      .catch(error => console.error("Erro ao salvar:", error));
   }
   
 
@@ -99,15 +104,20 @@ function editarUsuario(id){
         .then(usuario => { // aqui ele vai preencher os campos do formulário com os dados do usuário
             document.getElementById("id").value = usuario.id; // preenche o campo id
             document.getElementById("nome").value = usuario.nome; // preenche o campo nome
-            document.getElementById("password").value = usuario.password; // preenche o campo password
+            document.getElementById("senha").value = usuario.password; // preenche o campo password
             document.getElementById("ramal").value = usuario.ramal; // preenche o campo ramal
             document.getElementById("especialidade").value = usuario.especialidade; // preenche o campo especialidade
         });
 }
 
 function deletarUsuario(id) {
-    // Aqui ele vai fazer a requisição DELETE para deletar o usuário
-    fetch(`${API}/${id}`, { method: "DELETE" }) // faz uma requisição DELETE para a API + id
-        .then(res => res.json()) // converte a resposta para JSON
-        .then(() => carregarUsuarios()); // chama a função para carregar a lista de usuários novamente
-}
+    if (confirm("Deseja realmente excluir este usuário?")) {
+      fetch(`${API}/${id}`, { method: "DELETE" })
+        .then(res => {
+          if (!res.ok) throw new Error("Erro ao deletar");
+          carregarUsuarios();
+        })
+        .catch(error => console.error("Erro:", error));
+    }
+  }
+  
