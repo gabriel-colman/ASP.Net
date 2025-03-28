@@ -50,6 +50,8 @@ namespace Exemplo5ComBancoEntity
 
             // Roda a aplicação
             app.Run();
+
+            // link para o swagger: http://localhost:5000/swagger/index.html
         }
     }
 }
