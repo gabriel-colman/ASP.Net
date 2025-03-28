@@ -65,3 +65,23 @@ namespace Exemplo5ComBancoEntity.Controllers
         }
     }
 }
+
+
+// Segue o cascade para quando eu deletar um usuário, deletar as máquinas e softwares associados a ele:
+
+// ALTER TABLE maquina
+// DROP CONSTRAINT maquina_fk_usuario_fkey;
+
+// ALTER TABLE maquina
+// ADD CONSTRAINT maquina_fk_usuario_fkey
+// FOREIGN KEY (fk_usuario) REFERENCES usuarios(id_usuario)
+// ON DELETE CASCADE;
+
+
+// ALTER TABLE software
+// DROP CONSTRAINT software_fk_maquina_fkey;
+
+// ALTER TABLE software
+// ADD CONSTRAINT software_fk_maquina_fkey
+// FOREIGN KEY (fk_maquina) REFERENCES maquina(id_maquina)
+// ON DELETE CASCADE;
