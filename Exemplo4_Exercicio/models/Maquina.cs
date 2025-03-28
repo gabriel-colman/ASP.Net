@@ -2,32 +2,36 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Exemplo4_Exercicio.models
+namespace Exemplo5ComBancoEntity.Models
 {
-    [Table("Maquina")]
+    [Table("maquina")]
     public class Maquina
     {
-         [Column("Id_Maquina")]
+        [Key] // Define a chave primária
+        [Column("id_Maquina")]
         public int Id { get; set; }
 
-        [Column("Tipo")]
+        [Column("tipo")]
         public string Tipo { get; set; }
 
-        [Column("Velocidade")]
+        [Column("velocidade")]
         public int Velocidade { get; set; }
 
-        [Column("HardDisk")]
+        [Column("hardDisk")]
         public int HardDisk { get; set; }
 
-        [Column("Placa_Rede")]
+        [Column("placa_Rede")]
         public int PlacaRede { get; set; }
 
-        [Column("Memoria_Ram")]
+        [Column("memoria_Ram")]
         public int MemoriaRam { get; set; }
 
-        [Column("Fk_Usuario")]
+        [ForeignKey("Usuario")]
+        [Column("fk_usuario")]
         public int FkUsuario { get; set; }
     }
 }

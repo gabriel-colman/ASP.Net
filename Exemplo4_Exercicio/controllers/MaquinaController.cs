@@ -1,18 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Exemplo5ComBancoEntity.Models;
+using Exemplo5ComBancoEntity.database;
 using Microsoft.EntityFrameworkCore;
-using Exemplo4_Exercicio.database;
-using Exemplo4_Exercicio.models;
 
-namespace Exemplo4_Exercicio.controller
+namespace Exemplo5ComBancoEntity.Controllers
 {
     [ApiController]
     [Route("[controller]")]
     public class MaquinaController : ControllerBase
-    {   private readonly AppDbContext _context;
+    {
+        private readonly AppDbContext _context;
 
         public MaquinaController(AppDbContext context)
         {

@@ -3,9 +3,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
-using Exemplo4_Exercicio.database;
+using Exemplo5ComBancoEntity.database;
 
-namespace Exemplo4_Exercicio {
+namespace Exemplo5ComBancoEntity
+{
     public class Executar
     {
         public static void Main(string[] args)
@@ -13,11 +14,12 @@ namespace Exemplo4_Exercicio {
             var builder = WebApplication.CreateBuilder(args);
 
             // Carrega string de conexão do appsettings.json
-            var connectionString = builder.Configuration.GetConnectionString("PostgresConnection");
+            // var connectionString = builder.Configuration.GetConnectionString("PostgresConnection");
 
             // Registra o DbContext com o PostgreSQL
             builder.Services.AddDbContext<AppDbContext>(options =>
-                options.UseNpgsql(connectionString));
+             options.UseNpgsql(builder.Configuration.GetConnectionString("PostgresConnection")));
+
 
             // Adiciona suporte a controllers e Swagger
             builder.Services.AddControllers();
@@ -29,8 +31,8 @@ namespace Exemplo4_Exercicio {
             // Habilita Swagger (ambiente dev)
             // if (app.Environment.IsDevelopment())
             // {
-                app.UseSwagger();
-                app.UseSwaggerUI();
+            app.UseSwagger();
+            app.UseSwaggerUI();
             // }
 
             // Habilita HTTPS
@@ -48,8 +50,6 @@ namespace Exemplo4_Exercicio {
 
             // Roda a aplicação
             app.Run();
-
-            // o Link para o Swagger é: https://localhost:5001/swagger/index.html
         }
     }
 }

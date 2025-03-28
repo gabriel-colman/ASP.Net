@@ -1,15 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 using Microsoft.AspNetCore.Mvc;
+using Exemplo5ComBancoEntity.Models;
+using Exemplo5ComBancoEntity.database;
 using Microsoft.EntityFrameworkCore;
-using Exemplo4_Exercicio.models;
-using Exemplo4_Exercicio.database;
 
-
-namespace Exemplo4_Exercicio.controller
+namespace Exemplo5ComBancoEntity.Controllers
 {
     [ApiController]
     [Route("[controller]")]
