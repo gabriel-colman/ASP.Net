@@ -16,13 +16,14 @@ namespace Exemplo5ComBancoEntity.Models
     {
         [Key]
         [Column("id_usuario")]
+         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-
-        [Column("password")]
-        public string Password { get; set; }
 
         [Column("nome_usuario")]
         public string Nome { get; set; }
+     
+        [Column("password")]
+        public string Password { get; set; }
 
         [Column("ramal")]
         public int Ramal { get; set; }
