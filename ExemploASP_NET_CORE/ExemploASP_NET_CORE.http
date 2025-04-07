@@ -4,3 +4,28 @@ GET {{ExemploASP_NET_CORE_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+# Testar Get
+Get http://localhost:5185/Usuario
+Accept: application/json
+
+### 
+# Testar Post
+POST http://localhost:5185/Usuario
+Content-Type: application/json
+{
+    "Nome": "Lucas",
+    "Email": "lucas@gmail.com"
+},
+
+###
+# Testar Put
+PUT http://localhost:5185/Usuario/1
+Content-Type:  application/json
+{
+    "Nome": "gabriel atualizado",
+    "Email": "gabriel@gmail.com"
+}
+
+###
+# Testar Delete
+DELETE http://localhost:5185/Usuario/5
