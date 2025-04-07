@@ -29,12 +29,15 @@ namespace Exemplo5ComBancoEntity
             var app = builder.Build();
 
             // Erro para verificiar se teve conexão com o banco de dados
-            using (var scope = app.Services.CreateScope())
+            using (var scope = app.Services.CreateScope()) // CreateScope cria um escopo para o DbContext(escopo seria um contexto de execução temporário, onde o DbContext é criado e usado)
+            // permitindo que ele seja descartado corretamente após o uso
+            // Isso é importante para evitar problemas de conexão com o banco de dados, especialmente em aplicações ASP.NET Core onde o DbContext é registrado como um serviço com escopo (Scoped).
             {
-                var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+                var db = scope.ServiceProvider.GetRequiredService<AppDbContext>(); // Obtém uma instância do DbContext a partir do escopo criado
                 try
                 {
-                    if (db.Database.CanConnect())
+                    if (db.Database.CanConnect()) // Verifica se o banco de dados está acessível
+                    // Se o banco de dados estiver acessível, a conexão foi estabelecida com sucesso
                     {
                         Console.WriteLine("✅ Conexão com o banco de dados estabelecida com sucesso.");
                         VerificarMapeamentoEntidades(db); // <-- chamada aqui
@@ -59,7 +62,8 @@ namespace Exemplo5ComBancoEntity
                 try
                 {
                     // Tenta consultar cada entidade
-                    _ = db.Usuarios.Take(1).ToList(); // isso aqui quer dizer que ele vai pegar 1 registro da tabela Usuarios,  Take é o mesmo que Limit no SQL
+                    _ = db.Usuarios.Take(1).ToList(); // isso aqui quer dizer que ele vai pegar 1 registro da tabela Usuarios,  Take é o mesmo que Limit no SQL, _= quer dizer que não vai usar o retorno
+                    // ou seja, ele só quer verificar se a tabela existe e se o mapeamento está correto
                     _ = db.Maquinas.Take(1).ToList();
                     _ = db.Softwares.Take(1).ToList();
 
