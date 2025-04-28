@@ -14,8 +14,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.9.0" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="8.1.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.9.0" />
   </ItemGroup>
 
 </Project>
@@ -36,4 +38,8 @@ dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
 Para usar os Migrations do Entity Framework Core, é necessário adicionar o seguinte comando:
 dotnet ef migrations add InitialCreate 
 dotnet ef database update
+
+Para ver tudo que esta instalado:
+dotnet list package 
+dotnet remove package <nome do pacote>
  -->
