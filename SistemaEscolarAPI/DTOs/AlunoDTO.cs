@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SistemaEscolarAPI.DTO
+namespace SistemaEscolarAPI.DTOs
 {
     public class AlunoDTO
     {

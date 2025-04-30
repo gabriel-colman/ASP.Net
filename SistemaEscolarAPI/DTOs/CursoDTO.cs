@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SistemaEscolarAPI.DTO
+namespace SistemaEscolarAPI.DTOs
 {
-    public class DisciplinaDTO
+    public class CursoDTO
     {
         public string Descricao { get; set; }
-        public string Curso { get; set; }
     }
 }
