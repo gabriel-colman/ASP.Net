@@ -25,12 +25,12 @@ public class DisciplinaAlunoCursoController : ControllerBase
     // IEnumerable<DisciplinaAlunoCursoDTO> é uma interface que representa uma coleção de objetos do tipo DisciplinaAlunoCursoDTO
     // ActionResult é uma classe base para resultados de ação em controladores ASP.NET
     {
-        var regitros = await _context.DisciplinasAlunosCursos
+        var regitros = await _context.DisciplinaAlunoCurso
           .Select(d => new DisciplinaAlunoCursoDTO
           {
-              AlunoID = d.AlunoID,
-              CursoID = d.CursoID,
-              DisciplinaID = d.DisciplinaID,
+              AlunoId = d.AlunoId,
+              CursoId = d.CursoId,
+              DisciplinaId = d.DisciplinaId,
           })
           .ToListAsync(); // Converte para uma lista assíncrona
 
@@ -43,11 +43,11 @@ public class DisciplinaAlunoCursoController : ControllerBase
     {
         var entidade = new DisciplinaAlunoCurso
         {
-            AlunoID = disciplinaAlunoCursoDTO.AlunoID,
-            CursoID = disciplinaAlunoCursoDTO.CursoID,
-            DisciplinaID = disciplinaAlunoCursoDTO.DisciplinaID
+            AlunoId = disciplinaAlunoCursoDTO.AlunoId,
+            CursoId = disciplinaAlunoCursoDTO.CursoId,
+            DisciplinaId = disciplinaAlunoCursoDTO.DisciplinaId
         };
-        _context.DisciplinasAlunosCursos.Add(entidade);
+        _context.DisciplinaAlunoCurso.Add(entidade);
         await _context.SaveChangesAsync();
 
         return Ok();
@@ -56,17 +56,17 @@ public class DisciplinaAlunoCursoController : ControllerBase
     [HttpPut("{id}")]
     public async Task<ActionResult> Put(int id, [FromBody] DisciplinaAlunoCursoDTO disciplinaAlunoCursoDTO)
     {
-        var entidade = await _context.DisciplinasAlunosCursos.FindAsync(id);
+        var entidade = await _context.DisciplinaAlunoCurso.FindAsync(id);
         if (entidade == null)
         {
             return NotFound();
         }
 
-        entidade.AlunoID = disciplinaAlunoCursoDTO.AlunoID;
-        entidade.CursoID = disciplinaAlunoCursoDTO.CursoID;
-        entidade.DisciplinaID = disciplinaAlunoCursoDTO.DisciplinaID;
+        entidade.AlunoId = disciplinaAlunoCursoDTO.AlunoId;
+        entidade.CursoId = disciplinaAlunoCursoDTO.CursoId;
+        entidade.DisciplinaId = disciplinaAlunoCursoDTO.DisciplinaId;
 
-        _context.DisciplinasAlunosCursos.Update(entidade);
+        _context.DisciplinaAlunoCurso.Update(entidade);
         await _context.SaveChangesAsync();
 
         return NoContent();
@@ -75,13 +75,13 @@ public class DisciplinaAlunoCursoController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<ActionResult> Delete(int id)
     {
-        var entidade = await _context.DisciplinasAlunosCursos.FindAsync(id);
+        var entidade = await _context.DisciplinaAlunoCurso.FindAsync(id);
         if (entidade == null)
         {
             return NotFound();
         }
 
-        _context.DisciplinasAlunosCursos.Remove(entidade);
+        _context.DisciplinaAlunoCurso.Remove(entidade);
         await _context.SaveChangesAsync();
 
         return NoContent();

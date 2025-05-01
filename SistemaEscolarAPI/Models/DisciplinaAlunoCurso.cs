@@ -5,7 +5,7 @@ namespace SistemaEscolarAPI.Models;
 
 public class DisciplinaAlunoCurso
 {
-    public int AlunoID { get; set; }
+    public int AlunoId { get; set; }
     public Aluno Aluno { get; set; }
 
     public int CursoId { get; set; }

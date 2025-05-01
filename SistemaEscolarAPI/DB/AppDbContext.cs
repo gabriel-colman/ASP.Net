@@ -21,7 +21,7 @@ public class AppDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder) // Aqui vai
     {
         modelBuilder.Entity<DisciplinaAlunoCurso>()
-            .HasKey(x => new { x.AlunoID, x.CursoId, x.DisciplinaId }); // haskey é a chave primária composta
+            .HasKey(x => new { x.AlunoId, x.CursoId, x.DisciplinaId }); // haskey é a chave primária composta
 
         // Relacionamentos adicionais
     }

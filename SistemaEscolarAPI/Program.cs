@@ -12,7 +12,12 @@ using SistemaEscolarAPI.DTOs;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Comando para criar os migrations no banco de dados
+// dotnet ef migrations add InitialCreate
+// dotnet ef database update
+
 // Configurar o DbContext com PostgreSQL (usando appsettings.json)
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("PostgresConnection")));
 
+var app = builder.Build();
