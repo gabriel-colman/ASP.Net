@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc; 
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SistemaEscolarAPI.Models;
 using SistemaEscolarAPI.DTOs;
@@ -28,7 +28,12 @@ public class AlunoController : ControllerBase
     {
         var alunos = await _context.Alunos
             .Include(a => a.Curso)
-            .Select(a => new AlunoDTO { Nome = a.Nome, Curso = a.Curso.Descricao })
+            .Select(a => new AlunoDTO
+            {
+                Id = a.Id,
+                Nome = a.Nome,
+                Curso = a.Curso.Descricao
+            })
             .ToListAsync();
 
         return Ok(alunos);
@@ -49,7 +54,7 @@ public class AlunoController : ControllerBase
         _context.Alunos.Add(aluno);
         await _context.SaveChangesAsync();
 
-        return Ok();
+        return Ok(new { mensagem = "Aluno cadastrado com sucesso" }); // mensagem é propriedade anonima que contem um valor adtribuido
     }
 
     [HttpPut("{id}")]
@@ -77,7 +82,7 @@ public class AlunoController : ControllerBase
         await _context.SaveChangesAsync(); // SaveChangesAsync é um método assíncrono que salva as alterações feitas no contexto do banco de dados
         // Aluno é uma classe que representa um aluno no banco de dados
 
-        return Ok();
+        return Ok(new { mensagem = "Aluno alterado com sucesso" });
     }
 
     [HttpDelete("{id}")]
@@ -95,6 +100,33 @@ public class AlunoController : ControllerBase
         // Aluno é uma classe que representa um aluno no banco de dados
         await _context.SaveChangesAsync(); // SaveChanges
 
-        return Ok();
+        return Ok(new { mensagem = "ALuno excluido com sucesso" });
+    }
+
+    // Nov metodo de para buscar aluno por ID
+    [HttpGet("{id}")]
+    public async Task<ActionResult<AlunoDTO>> Get(int id)
+    {
+        var aluno = await _context.Alunos
+            .Include(a => a.Curso)
+            .FirstOrDefaultAsync(a => a.Id == id);
+
+            // FirstOrDefaultAsync é metodo assincrono que retorna o primeiro elemento que atende a condição atribuida a ele, ou valor padrão se nenhum ele for encontrado, que é 500
+            // Include é metodo que inclui entidades relacioanadas na consulta, permitindo carregar dados relacionados (como o curso do aluno) junto com o aluno
+        
+
+        if (aluno == null)
+        {
+            return NotFound("Aluno não encontrado");
+        }
+
+        var alunoDto = new AlunoDTO
+        {
+            Id = aluno.Id,
+            Nome = aluno.Nome,
+            Curso = aluno.Curso.Descricao
+        };
+
+        return Ok(alunoDto);
     }
 }

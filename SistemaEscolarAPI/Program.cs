@@ -10,6 +10,8 @@ using SistemaEscolarAPI.DB;
 using SistemaEscolarAPI.Models;
 using SistemaEscolarAPI.DTOs;
 
+using Microsoft.OpenApi.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Comando para criar os migrations no banco de dados
@@ -21,3 +23,19 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("PostgresConnection")));
 
 var app = builder.Build();
+
+builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Sistema Escolar API", Version = "v1" }); // Define o título e a versão da API na documentação do Swagger
+});
+
+app.UseSwagger();
+app.UseSwaggerUI();
+
+
+// app.UseAuthentication();
+// app.UseAuthorization();
+app.MapControllers();
+app.Run();

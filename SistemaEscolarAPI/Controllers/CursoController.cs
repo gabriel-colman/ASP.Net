@@ -21,7 +21,11 @@ public class CursoController : ControllerBase
     public async Task<ActionResult<IEnumerable<CursoDTO>>> Get()
     {
         var cursos = await _context.Cursos
-            .Select(c => new CursoDTO { Descricao = c.Descricao })
+            .Select(c => new CursoDTO
+            {
+                Id = c.Id,
+                Descricao = c.Descricao
+            })
             .ToListAsync();
 
         return Ok(cursos);
@@ -34,7 +38,7 @@ public class CursoController : ControllerBase
         _context.Cursos.Add(curso);
         await _context.SaveChangesAsync();
 
-        return Ok();
+        return Ok(new { mensagem = "Curso cadastrado com sucesso" });
     }
 
     [HttpPut("{id}")]
@@ -66,4 +70,23 @@ public class CursoController : ControllerBase
 
         return NoContent();
     }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<CursoDTO>> GetById(int id)
+    {
+        var curso = await _context.Cursos.FindAsync(id);
+        if (curso == null) 
+        {
+            return NotFound();
+        }
+
+        var cursoDto = new CursoDTO
+        {
+            Id = curso.Id,
+            Descricao = curso.Descricao
+        };
+
+        return Ok(cursoDto);
+    }
+
 }
