@@ -6,6 +6,7 @@ using SistemaEscolarAPI.DTOs;
 using SistemaEscolarAPI.Models;
 using SistemaEscolarAPI.Services;
 using FluentValidation;
+using Microsoft.AspNetCore.Mvc;
 
 namespace SistemaEscolarAPI.Controllers
 {
@@ -26,7 +27,7 @@ namespace SistemaEscolarAPI.Controllers
             {
                 new Usuario {Username = "admin", Password = "123", Role = "Adminitrador"},
                 new Usuario {Username = "func", Password = "123", Role = "Funcionario"}
-            }
+            };
 
             var user = users.FirstOrDefault( u => 
                 u.Username == loginDto.Username &&
@@ -34,7 +35,7 @@ namespace SistemaEscolarAPI.Controllers
             );
 
             if (user == null)
-                return Unauthorized(new {message = "Usuario ou senha invalida"})
+                return Unauthorized(new {message = "Usuario ou senha invalida"});
             // Unauthorized retorna 401 com a mensagem informado que a validação não é a correta
 
             var token = TokenService.GenerateToken(user);
