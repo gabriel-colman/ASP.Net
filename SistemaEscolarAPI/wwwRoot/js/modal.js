@@ -21,7 +21,7 @@ class CustomModal {
     }
     show(title, body, buttons = []) { // metodo que mostra o modal
         this.modal.querySelector('.modal-title').textContent = title;  //define o titulo do modal
-        this.modal.querySelector('.modal-body').textContent = body;  // define o conteudo do corpo do modal
+        this.modal.querySelector('.modal-body').innerHTML = body;  // define o conteudo do corpo do modal
 
         const footer = this.modal.querySelector('.modal-footer');
         footer.innerHTML = ''; // aqui to limpando o conteudo no rodape da pagina, da nova telinha que será criada
