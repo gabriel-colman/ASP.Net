@@ -5,14 +5,13 @@ class CustomModal {
         this.modal.innerHTML = `
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title"> Pessoas responsaveis</h3>
-                    <button class="modal-close">&times;</button>
-                </div>
-                <div class="modal-body">
-                         
-                </div>    
-                <div class="modal-footer"></div>    
-            </div>
+                  <h3 class="modal-title"> Pessoas responsaveis</h3>
+            <button class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">         
+        </div>    
+        <div class="modal-footer"></div>    
+    </div>
         `;
         // appendChild é metodo que adiciona um elemento o filho a um elemento pai, no nosso caso        
         document.body.appendChild(this.modal);
