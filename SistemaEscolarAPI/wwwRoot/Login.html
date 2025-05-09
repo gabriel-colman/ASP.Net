@@ -61,53 +61,54 @@
     <script src="./js/modal.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const loginForm = document.getElementById('login-form');
-            const loginMessage = document.getElementById('login-message');
+        const loginForm = document.getElementById('login-form');
+        const loginMessage = document.getElementById('login-message');
 
-            loginForm.addEventListener('submit', function (e) {
-                e.preventDefault();
+        loginForm.addEventListener('submit', function (e) {
+            e.preventDefault();
 
-                const submitButton = loginForm.querySelector('button[type="submit"]');
-                submitButton.disable = true; // dissable é para evitar multiplos cliques
-                submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Autenticando...';
+            const submitButton = loginForm.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Autenticando...';
 
-                const loginData = {
-                    usarname: document.getElementById('username').value,
-                    password: document.getElementById('passaword').value
-                }
+            const loginData = {
+                username: document.getElementById('username').value,
+                password: document.getElementById('password').value
+            }
 
-                fetch('/api/Login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(loginData)
+            fetch('/api/Login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(loginData)
+            })
+                .then(response => {
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = '<i class="fas fa-sign-in-alt"></i> Entrar';
+
+                    if (!response.ok) {
+                        throw new Error("Credenciais inválidas");
+                    }
+                    return response.json();
                 })
-                    .then(response => {
-                        submitButton.disable = false;
-                        submitButton.innerHTML = '<i class="fas fa-sign-in-alt"></i> Entrar';
-
-                        if (!response.ok) {
-                            throw new Error("Credenciais invalidas");
-                        }
-                        return response.json;
-                    })
-                    .then(data => {
-                        Modal.show('Login Bem sucedido', `Bem-vindo, ${loginData.usarname}`, [
-                            {
-                                text: 'Ok',
-                                type: 'primary',
-                                handler: () => {
-                                    window.location.href = 'index.html';
-                                }
+                .then(data => {
+                    console.log("Token recebido", data.token);
+                    Modal.show('Login Bem-sucedido', `Bem-vindo, ${loginData.username}`, [
+                        {
+                            text: 'Ok',
+                            type: 'primary',
+                            handler: () => {
+                                window.location.href = 'index.html';
                             }
-                        ]);
-                    })
-                    .catch(error => {
-                        submitButton.disable = false;
-                        submitButton.innerHTML = '<i class="fas fa-sign-in-alt"></i> Entrar';
-                         Modal.show('Erro no Login', error.message || 'Erro ao realizar login');
-                    });
+                        }
+                    ]);
+                })
+                .catch(error => {
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = '<i class="fas fa-sign-in-alt"></i> Entrar';
+                    Modal.show('Erro no Login', error.message || 'Erro ao realizar login');
+                });
             });
 
         });
